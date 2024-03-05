@@ -120,6 +120,11 @@ vim.opt.undofile = true
 vim.opt.ignorecase = true
 vim.opt.smartcase = true
 
+-- Default indentation
+vim.opt.shiftwidth = 2
+vim.opt.expandtab = true
+vim.opt.smartindent = true
+
 -- Keep signcolumn on by default
 vim.opt.signcolumn = 'yes'
 
@@ -509,6 +514,11 @@ require('lazy').setup {
               callback = vim.lsp.buf.clear_references,
             })
           end
+          if client and client.server_capabilities.inlayHintProvider then
+            if vim.lsp.inlay_hints then
+              vim.lsp.inlay_hint(event.buf, true)
+            end
+          end
         end,
       })
 
@@ -821,6 +831,50 @@ require('lazy').setup {
   --  Uncomment the following line and add your plugins to `lua/custom/plugins/*.lua` to get going.
   --    For additional information, see `:help lazy.nvim-lazy.nvim-structuring-your-plugins`
   { import = 'custom.plugins' },
+
+  {
+    'rmagatti/auto-session',
+    opts = {
+      auto_session_suppress_dirs = { '~/', '~/src' },
+      pre_save_cmds = { 'tabdo Neotree close' },
+    },
+  },
+  {
+    'zbirenbaum/copilot.lua',
+    opts = {
+      panel = {
+        enabled = true,
+        auto_refresh = false,
+        keymap = {
+          jump_prev = '[[',
+          jump_next = ']]',
+          accept = '<C-y>',
+          refresh = 'gr',
+          open = '<M-CR>',
+        },
+        layout = {
+          position = 'bottom', -- | top | left | right
+          ratio = 0.4,
+        },
+      },
+      suggestion = {
+        enabled = true,
+        auto_trigger = true,
+        debounce = 75,
+        keymap = {
+          accept = '<C-l>',
+          accept_word = false,
+          accept_line = false,
+          next = '<M-]>',
+          prev = '<M-[>',
+          dismiss = '<C-]>',
+        },
+      },
+      copilot_node_command = 'node', -- Node.js version must be > 16.x
+      server_opts_overrides = {},
+      filetypes = { markdown = true, gitcommit = true, yaml = true },
+    },
+  },
 }
 
 -- The line beneath this is called `modeline`. See `:help modeline`
