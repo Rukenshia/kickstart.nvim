@@ -120,11 +120,6 @@ vim.opt.undofile = true
 vim.opt.ignorecase = true
 vim.opt.smartcase = true
 
--- Default indentation
-vim.opt.shiftwidth = 2
-vim.opt.expandtab = true
-vim.opt.smartindent = true
-
 -- Keep signcolumn on by default
 vim.opt.signcolumn = 'yes'
 
@@ -680,13 +675,13 @@ require('lazy').setup {
         -- chosen, you will need to read `:help ins-completion`
         --
         -- No, but seriously. Please read `:help ins-completion`, it is really good!
-        mapping = cmp.mapping.preset.insert {
+        mapping = {
           -- Select the [n]ext item
           ['<C-n>'] = cmp.mapping.select_next_item(),
           -- Select the [p]revious item
           ['<C-p>'] = cmp.mapping.select_prev_item(),
 
-          -- Accept ([y]es) the completion.
+          -- Accept the completion.
           --  This will auto-import if your LSP supports it.
           --  This will expand snippets if the LSP sent a snippet.
           ['<CR>'] = cmp.mapping.confirm { select = true },
@@ -841,39 +836,41 @@ require('lazy').setup {
   },
   {
     'zbirenbaum/copilot.lua',
-    opts = {
-      panel = {
-        enabled = true,
-        auto_refresh = false,
-        keymap = {
-          jump_prev = '[[',
-          jump_next = ']]',
-          accept = '<C-y>',
-          refresh = 'gr',
-          open = '<M-CR>',
+    config = function()
+      require('copilot').setup {
+        panel = {
+          enabled = true,
+          auto_refresh = true,
+          keymap = {
+            jump_prev = '[[',
+            jump_next = ']]',
+            accept = '<C-y>',
+            refresh = 'gr',
+            open = '<M-CR>',
+          },
+          layout = {
+            position = 'bottom', -- | top | left | right
+            ratio = 0.4,
+          },
         },
-        layout = {
-          position = 'bottom', -- | top | left | right
-          ratio = 0.4,
+        suggestion = {
+          enabled = true,
+          auto_trigger = true,
+          debounce = 75,
+          keymap = {
+            accept = '<C-y>',
+            accept_word = false,
+            accept_line = false,
+            next = '<M-]>',
+            prev = '<M-[>',
+            dismiss = '<C-]>',
+          },
         },
-      },
-      suggestion = {
-        enabled = true,
-        auto_trigger = true,
-        debounce = 75,
-        keymap = {
-          accept = '<C-l>',
-          accept_word = false,
-          accept_line = false,
-          next = '<M-]>',
-          prev = '<M-[>',
-          dismiss = '<C-]>',
-        },
-      },
-      copilot_node_command = 'node', -- Node.js version must be > 16.x
-      server_opts_overrides = {},
-      filetypes = { markdown = true, gitcommit = true, yaml = true },
-    },
+        copilot_node_command = 'node', -- Node.js version must be > 16.x
+        server_opts_overrides = {},
+        filetypes = { markdown = true, gitcommit = true, yaml = true },
+      }
+    end,
   },
 }
 
