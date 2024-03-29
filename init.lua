@@ -625,6 +625,8 @@ require('lazy').setup {
         typescript = { { 'prettierd', 'prettier' } },
         html = { { 'prettierd', 'prettier' } },
 
+        markdown = { { 'prettierd', 'prettier' } },
+
         go = { 'gofmt', 'goimports', 'gci' },
         rust = { 'rustfmt' },
         terraform = { 'terraform fmt' },
