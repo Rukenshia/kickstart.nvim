@@ -517,6 +517,8 @@ require('lazy').setup {
         end,
       })
 
+      vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled())
+
       -- LSP servers and clients are able to communicate to each other what features they support.
       --  By default, Neovim doesn't support everything that is in the LSP Specification.
       --  When you add nvim-cmp, luasnip, etc. Neovim now has *more* capabilities.
@@ -733,25 +735,25 @@ require('lazy').setup {
     -- change the command in the config to whatever the name of that colorscheme is
     --
     -- If you want to see what colorschemes are already installed, you can use `:Telescope colorscheme`
-    -- 'folke/tokyonight.nvim',
-    -- lazy = false, -- make sure we load this during startup if it is your main colorscheme
-    -- priority = 1000, -- make sure to load this before all the other start plugins
-    -- config = function()
-    --   -- Load the colorscheme here
-    --   vim.cmd.colorscheme 'tokyonight-night'
-    --
-    --   -- You can configure highlights by doing something like
-    --   vim.cmd.hi 'Comment gui=none'
-    -- end,
-  },
-  {
-    'dasupradyumna/midnight.nvim',
-    lazy = false,
-    priority = 1000,
+    'folke/tokyonight.nvim',
+    lazy = false, -- make sure we load this during startup if it is your main colorscheme
+    priority = 1000, -- make sure to load this before all the other start plugins
     config = function()
-      vim.cmd.colorscheme 'midnight'
+      -- Load the colorscheme here
+      vim.cmd.colorscheme 'tokyonight-night'
+
+      -- You can configure highlights by doing something like
+      vim.cmd.hi 'Comment gui=none'
     end,
   },
+  -- {
+  --   'dasupradyumna/midnight.nvim',
+  --   lazy = false,
+  --   priority = 1000,
+  --   config = function()
+  --     vim.cmd.colorscheme 'midnight'
+  --   end,
+  -- },
 
   -- Highlight todo, notes, etc in comments
   { 'folke/todo-comments.nvim', event = 'VimEnter', dependencies = { 'nvim-lua/plenary.nvim' }, opts = { signs = true } },
