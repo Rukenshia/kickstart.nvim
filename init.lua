@@ -627,7 +627,8 @@ require('lazy').setup {
         typescript = { { 'prettierd', 'prettier' } },
         html = { { 'prettierd', 'prettier' } },
 
-        markdown = { { 'prettierd', 'prettier' } },
+        -- markdown = { { 'markdownlint-cli2' } },
+        markdown = { { 'prettierd', 'prettier', 'markdownlint-cli2' } },
 
         go = { 'gofmt', 'goimports', 'gci' },
         rust = { 'rustfmt' },
