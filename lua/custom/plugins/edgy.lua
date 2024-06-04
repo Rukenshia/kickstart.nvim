@@ -1,6 +1,5 @@
 return {
   'folke/edgy.nvim',
-  cond = vim.g.vscode,
   event = 'VeryLazy',
   opts = {
     animate = { cps = 240 },
