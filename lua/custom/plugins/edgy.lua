@@ -46,7 +46,11 @@ return {
       'neo-tree',
     },
     right = { { ft = 'Outline', pinned = true, open = 'SymbolsOutline' } },
-    options = { left = { size = 50 }, exit_when_last = true },
+    options = { left = { size = 50 }, right = { size = 50 }, exit_when_last = true },
+  },
+  keys = {
+    -- "|": focus the Neo-Tree Buffers window
+    { '|', ':lua require("edgy").open("left", "Neo-Tree Buffers")<CR>', desc = 'Neo-Tree Buffers' },
   },
   config = function(plugin, opts)
     require('edgy').setup(opts)
