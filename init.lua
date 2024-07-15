@@ -269,15 +269,22 @@ require('lazy').setup {
     'folke/which-key.nvim',
     event = 'VimEnter', -- Sets the loading event to 'VimEnter'
     config = function() -- This is the function that runs, AFTER loading
-      require('which-key').setup()
+      local wk = require 'which-key'
+      wk.setup {
+        preset = 'modern',
+        win = {
+          title_pos = 'center',
+          padding = { 2, 8 },
+        },
+      }
 
       -- Document existing key chains
-      require('which-key').register {
-        ['<leader>c'] = { name = '[C]ode', _ = 'which_key_ignore' },
-        ['<leader>d'] = { name = '[D]ocument', _ = 'which_key_ignore' },
-        ['<leader>r'] = { name = '[R]ename', _ = 'which_key_ignore' },
-        ['<leader>s'] = { name = '[S]earch', _ = 'which_key_ignore' },
-        ['<leader>w'] = { name = '[W]orkspace', _ = 'which_key_ignore' },
+      wk.add {
+        { '<leader>c', group = '[C]ode' },
+        { '<leader>d', group = '[D]ocument' },
+        { '<leader>r', group = '[R]ename' },
+        { '<leader>s', group = '[S]earch' },
+        { '<leader>w', group = '[W]orkspace' },
       }
     end,
   },
@@ -484,7 +491,18 @@ require('lazy').setup {
 
           -- Execute a code action, usually your cursor needs to be on top of an error
           -- or a suggestion from your LSP for this to activate.
-          map('<leader>ca', vim.lsp.buf.code_action, '[C]ode [A]ction')
+          -- map('<leader>ca', vim.lsp.buf.code_action, '[C]ode [A]ction')
+
+          -- using FastAction
+          -- vim.keymap.set('n', '<leader>ca', '<cmd>lua require("fastaction").code_action()<CR>', { buffer = event.buf })
+          -- vim.keymap.set('v', '<leader>ca', "<esc><cmd>lua require('fastaction').range_code_action()<CR>", { buffer = event.buf })
+          map('<leader>ca', require('fastaction').code_action, '[C]ode [A]ction')
+          vim.keymap.set(
+            'v',
+            '<leader>ca',
+            "<esc><cmd>lua require('fastaction').range_code_action()<CR>",
+            { buffer = event.buf, desc = 'LSP: [C]ode [A]ction' }
+          )
 
           -- Opens a popup that displays documentation about the word under your cursor
           --  See `:help K` for why this keymap
