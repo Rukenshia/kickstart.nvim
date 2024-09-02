@@ -568,6 +568,25 @@ require('lazy').setup {
         -- But for many setups, the LSP (`tsserver`) will work just fine
         -- tsserver = {},
         --
+        tailwindcss = {
+          filetypes = { 'html', 'css', 'scss', 'javascript', 'javascriptreact', 'typescript', 'typescriptreact', 'heex', 'elixir', 'eelixir' },
+          init_options = {
+            userLanguages = {
+              elixir = 'html-eex',
+              eelixir = 'html-eex',
+              heex = 'html-eex',
+            },
+          },
+          settings = {
+            tailwindCSS = {
+              experimental = {
+                classRegex = {
+                  'class[:]\\s*"([^"]*)"',
+                },
+              },
+            },
+          },
+        },
 
         lua_ls = {
           -- cmd = {...},
@@ -637,6 +656,12 @@ require('lazy').setup {
         lsp_fallback = true,
       },
       formatters_by_ft = {
+        elixir = { 'mix' },
+        eelixir = { 'mix' },
+        heex = { 'mix' },
+
+        css = { 'prettierd', 'prettier' },
+
         lua = { 'stylua' },
         -- Conform can also run multiple formatters sequentially
         python = { 'isort', 'black' },
