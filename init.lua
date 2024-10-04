@@ -633,6 +633,7 @@ require('lazy').setup {
       require('mason-tool-installer').setup { ensure_installed = ensure_installed }
 
       require('mason-lspconfig').setup {
+        automatic_installation = true,
         handlers = {
           function(server_name)
             local server = servers[server_name] or {}
@@ -660,6 +661,12 @@ require('lazy').setup {
         eelixir = { 'mix' },
         heex = { 'mix' },
 
+        tf = { 'terraform fmt' },
+
+        -- sql = { 'sqlfmt' },
+
+        rego = { 'opa_fmt' },
+
         css = { 'prettierd', 'prettier' },
 
         lua = { 'stylua' },
@@ -679,6 +686,7 @@ require('lazy').setup {
         rust = { 'rustfmt' },
         terraform = { 'terraform fmt' },
         sh = { 'shfmt' },
+        bash = { 'shfmt' },
       },
     },
   },
@@ -885,12 +893,12 @@ require('lazy').setup {
             -- Below will go to either the start or the end, whichever is closer.
             -- Use if you want more granular movements
             -- Make it even more gradual by adding multiple queries and regex.
-            goto_next = {
-              [']d'] = '@conditional.outer',
-            },
-            goto_previous = {
-              ['[d'] = '@conditional.outer',
-            },
+            -- goto_next = {
+            --   [']d'] = '@conditional.outer',
+            -- },
+            -- goto_previous = {
+            --   ['[d'] = '@conditional.outer',
+            -- },
           },
         },
       }
