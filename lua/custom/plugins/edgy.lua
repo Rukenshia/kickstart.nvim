@@ -112,8 +112,9 @@ return {
         filter = function(buf)
           return vim.b[buf].neo_tree_source == 'git_status'
         end,
+        size = { height = 0.2 },
         pinned = true,
-        collapsed = true, -- show window as closed/collapsed on start
+        collapsed = false, -- show window as closed/collapsed on start
         open = 'Neotree position=right git_status',
       },
       {
@@ -122,6 +123,7 @@ return {
         filter = function(buf)
           return vim.b[buf].neo_tree_source == 'buffers'
         end,
+        size = { height = 0.2 },
         pinned = true,
         collapsed = false, -- show window as closed/collapsed on start
         open = 'Neotree position=top buffers',
