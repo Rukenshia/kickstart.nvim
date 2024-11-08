@@ -332,6 +332,7 @@ require('lazy').setup({
         { '<leader>w', group = '[W]orkspace' },
         { '<leader>g', group = '[G]it' },
         { '<leader>t', group = '[T]oggle' },
+        { '<leader>x', group = 'Diagnosti[X]' },
         { '<leader>h', group = 'Git [H]unk', mode = { 'n', 'v' } },
       }
     end,
