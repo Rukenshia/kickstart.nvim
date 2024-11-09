@@ -1,7 +1,11 @@
 return {
   'MeanderingProgrammer/markdown.nvim',
   name = 'render-markdown',
+  lazy = true,
+  event = 'VeryLazy',
   dependencies = { 'nvim-treesitter/nvim-treesitter' },
+  ft = { 'markdown', 'Avante' },
+
   config = function()
     -- define highlight groups
     vim.api.nvim_command [[
@@ -11,6 +15,7 @@ return {
       hi MarkdownHeadingSymbol1 guifg=#ff0000
     ]]
     require('render-markdown').setup {
+      file_types = { 'markdown', 'Avante' },
       headings = { 'h.', 'h2.', 'h3.', 'h4.', 'h5.', 'h6.' },
       highlights = {
         heading = {
@@ -32,15 +37,3 @@ return {
     }
   end,
 }
--- return {
---     "OXY2DEV/markview.nvim",
---     ft = "markdown",
---
---     dependencies = {
---         -- You may not need this if you don't lazy load
---         -- Or if the parsers are in your $RUNTIMEPATH
---         "nvim-treesitter/nvim-treesitter",
---
---         "nvim-tree/nvim-web-devicons"
---     },
--- }
