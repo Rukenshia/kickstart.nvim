@@ -7,7 +7,11 @@ return {
     -- Only one of these is needed.
     'nvim-telescope/telescope.nvim', -- optional
   },
-  config = true,
+  config = function()
+    require('neogit').setup {
+      graph_style = 'kitty',
+    }
+  end,
   keys = {
     { '<leader>gg', '<cmd>Neogit<CR>', desc = 'Neo[g]it' },
     { '<leader>gc', '<cmd>Neogit commit<CR>', desc = 'Neogit [c]ommit' },
