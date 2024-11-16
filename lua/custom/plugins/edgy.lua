@@ -66,6 +66,7 @@ return {
     vim.opt.splitkeep = 'screen'
   end,
   opts = {
+    animate = { cps = 240 },
     bottom = {
       -- toggleterm / lazyterm at the bottom with a height of 40% of the screen
       {
@@ -104,7 +105,10 @@ return {
         filter = function(buf)
           return vim.b[buf].neo_tree_source == 'filesystem'
         end,
-        size = { height = 0.5 },
+        collapsed = false,
+        pinned = true,
+        open = 'Neotree position=left filesystem',
+        size = { height = 0.3 },
       },
       {
         title = 'Neo-Tree Git',
@@ -128,6 +132,10 @@ return {
         collapsed = false, -- show window as closed/collapsed on start
         open = 'Neotree position=top buffers',
       },
+      -- any other neo-tree windows
+      'neo-tree',
+    },
+    right = {
       {
         title = function()
           local buf_name = vim.api.nvim_buf_get_name(0) or '[No Name]'
@@ -135,10 +143,11 @@ return {
         end,
         ft = 'Outline',
         pinned = true,
-        open = 'SymbolsOutlineOpen',
+        open = 'Outline',
       },
-      -- any other neo-tree windows
-      'neo-tree',
     },
+  },
+  keys = {
+    { '<C-n>', ':lua require("edgy").toggle("left")<CR>:lua require("edgy").select("left")<CR>', desc = 'Toggle Neo-Tree', silent = true },
   },
 }
