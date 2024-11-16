@@ -1,0 +1,22 @@
+return {
+  'folke/snacks.nvim',
+  priority = 1000,
+  lazy = false,
+  opts = {
+    -- your configuration comes here
+    -- or leave it empty to use the default settings
+    -- refer to the configuration section below
+    bigfile = { enabled = true },
+    bufdelete = { enabled = true },
+    gitbrowse = { enabled = true },
+    git = { enabled = true },
+    notifier = { enabled = true },
+    quickfile = { enabled = true },
+    statuscolumn = { enabled = true },
+    words = { enabled = true },
+  },
+  keys = {
+    { '<leader>gb', ':lua require("snacks").git.blame_line()<CR>', silent = true, desc = 'Git [b]lame' },
+    { '<leader>go', ':lua require("snacks").gitbrowse.open()<CR>', silent = true, desc = 'Git [o]pen browser' },
+  },
+}
