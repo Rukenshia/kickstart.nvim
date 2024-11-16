@@ -12,6 +12,5 @@ return {
   },
   keys = {
     { '\\', ':Neotree reveal left<CR>', desc = 'Neotree reveal' },
-    { '<C-n>', ':Neotree toggle<CR>', desc = 'Neotree toggle' },
   },
 }
