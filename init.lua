@@ -1022,13 +1022,6 @@ require('lazy').setup({
   { import = 'custom.plugins' },
 
   {
-    'rmagatti/auto-session',
-    opts = {
-      auto_session_suppress_dirs = { '~/', '~/src' },
-      pre_save_cmds = { 'tabdo Neotree close' },
-    },
-  },
-  {
     'zbirenbaum/copilot.lua',
     config = function()
       require('copilot').setup {
