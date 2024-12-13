@@ -334,6 +334,7 @@ require('lazy').setup({
         { '<leader>t', group = '[T]oggle' },
         { '<leader>x', group = 'Diagnosti[X]' },
         { '<leader>h', group = 'Git [H]unk', mode = { 'n', 'v' } },
+        { '<leader>v', group = '[V]isual helpers', mode = { 'n' } },
       }
     end,
   },
@@ -720,7 +721,7 @@ require('lazy').setup({
     cmd = { 'ConformInfo' },
     keys = {
       {
-        '<leader>f',
+        '<leader>df',
         function()
           require('conform').format { async = true, lsp_format = 'fallback' }
         end,
@@ -752,6 +753,8 @@ require('lazy').setup({
         heex = { 'mix' },
 
         tf = { 'terraform fmt' },
+
+        zsh = { 'shfmt' },
 
         -- sql = { 'sqlfmt' },
 

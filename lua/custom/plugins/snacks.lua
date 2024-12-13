@@ -14,6 +14,9 @@ return {
     quickfile = { enabled = true },
     statuscolumn = { enabled = true },
     words = { enabled = true },
+    scrollview = { enabled = true },
+    indent = { enabled = true, animate = { duration = { step = 20, total = 200 } } },
+    zen = { enabled = true },
     dashboard = {
       enabled = true,
 
@@ -25,9 +28,30 @@ return {
         { section = 'startup' },
       },
     },
+
+    dim = { enabled = true },
   },
   keys = {
     { '<leader>gb', ':lua require("snacks").git.blame_line()<CR>', silent = true, desc = 'Git [b]lame' },
     { '<leader>go', ':lua require("snacks").gitbrowse.open()<CR>', silent = true, desc = 'Git [o]pen browser' },
+
+    {
+      '<leader>.',
+      function()
+        Snacks.scratch()
+      end,
+      desc = 'Toggle Scratch Buffer',
+    },
+    {
+      '<leader>f.',
+      function()
+        Snacks.scratch.select()
+      end,
+      desc = 'Select Scratch Buffer',
+    },
+
+    { '<leader>vd', ':lua require("snacks").dim()<CR>', silent = true, desc = 'Dim' },
+    { '<leader>vr', ':lua require("snacks").dim.disable()<CR>', silent = true, desc = 'Reset dim' },
+    { '<leader>vz', ':lua require("snacks").zen.zen()<CR>', silent = true, desc = 'Zen' },
   },
 }
