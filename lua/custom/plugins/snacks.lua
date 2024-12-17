@@ -14,7 +14,7 @@ return {
     quickfile = { enabled = true },
     statuscolumn = { enabled = true },
     words = { enabled = true },
-    scrollview = { enabled = true },
+    scroll = { enabled = true },
     indent = { enabled = true, animate = { duration = { step = 20, total = 200 } } },
     zen = { enabled = true },
     dashboard = {
