@@ -1087,6 +1087,15 @@ require('lazy').setup({
 
   {
     'zbirenbaum/copilot.lua',
+    enabled = true,
+    keys = {
+      {
+        '<leader>cc',
+        '<cmd>lua require("copilot.suggestion").toggle_auto_trigger()<CR><cmd>lua require("snacks").notify.info("Copilot suggestions toggled")<CR>',
+        mode = 'n',
+        desc = 'Toggle [c]ompletion',
+      },
+    },
     config = function()
       require('copilot').setup {
         panel = {

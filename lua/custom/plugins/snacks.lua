@@ -17,6 +17,7 @@ return {
     scroll = { enabled = true },
     indent = { enabled = true, animate = { duration = { step = 20, total = 200 } } },
     zen = { enabled = true },
+    toggle = { enabled = true },
     dashboard = {
       enabled = true,
 
