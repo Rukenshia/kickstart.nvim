@@ -12,7 +12,6 @@ return {
     git = { enabled = true },
     notifier = { enabled = true },
     quickfile = { enabled = true },
-    statuscolumn = { enabled = true },
     words = { enabled = true },
     scroll = { enabled = true },
     indent = { enabled = true, animate = { duration = { step = 20, total = 200 } } },
@@ -54,5 +53,6 @@ return {
     { '<leader>vd', ':lua require("snacks").dim()<CR>', silent = true, desc = 'Dim' },
     { '<leader>vr', ':lua require("snacks").dim.disable()<CR>', silent = true, desc = 'Reset dim' },
     { '<leader>vz', ':lua require("snacks").zen.zen()<CR>', silent = true, desc = 'Zen' },
+    { '<leader>tt', ':lua require("snacks").toggle()<CR>', silent = true, desc = 'Toggle Menu' },
   },
 }
