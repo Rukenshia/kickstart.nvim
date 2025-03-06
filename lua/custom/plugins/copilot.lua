@@ -41,7 +41,7 @@ return {
           dismiss = '<C-]>',
         },
       },
-      copilot_node_command = 'node', -- Node.js version must be > 16.x
+      copilot_node_command = os.getenv 'NODE_LTS',
       server_opts_overrides = {},
       filetypes = { markdown = true, gitcommit = true, yaml = true },
     }

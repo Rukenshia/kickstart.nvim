@@ -8,7 +8,7 @@ return {
       pattern = 'PersistedSavePre',
       callback = function()
         for _, buf in ipairs(vim.api.nvim_list_bufs()) do
-          if vim.bo[buf].filetype == 'neo-tree' then
+          if vim.bo[buf].filetype == 'neo-tree' or vim.bo[buf].filetype == 'Outline' then
             vim.api.nvim_buf_delete(buf, { force = true })
           end
         end
