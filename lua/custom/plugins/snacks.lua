@@ -60,5 +60,7 @@ return {
 
     { '\\', ':lua require("snacks").explorer.reveal()<CR>', silent = true, desc = 'Reveal file' },
     { '<C-n>', ':lua require("snacks").explorer.open()<CR>', silent = true, desc = 'Open explorer' },
+
+    { '<C-x>', ':lua require("snacks").bufdelete.delete()<CR>', silent = true, desc = 'Close buffer' },
   },
 }
