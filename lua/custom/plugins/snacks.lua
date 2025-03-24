@@ -8,6 +8,9 @@ return {
     -- refer to the configuration section below
     bigfile = { enabled = true },
     bufdelete = { enabled = true },
+    explorer = {
+      replace_netrw = true,
+    },
     gitbrowse = { enabled = true },
     git = { enabled = true },
     notifier = { enabled = true },
@@ -54,5 +57,8 @@ return {
     { '<leader>vr', ':lua require("snacks").dim.disable()<CR>', silent = true, desc = 'Reset dim' },
     { '<leader>vz', ':lua require("snacks").zen.zen()<CR>', silent = true, desc = 'Zen' },
     { '<leader>tt', ':lua require("snacks").toggle()<CR>', silent = true, desc = 'Toggle Menu' },
+
+    { '\\', ':lua require("snacks").explorer.reveal()<CR>', silent = true, desc = 'Reveal file' },
+    { '<C-n>', ':lua require("snacks").explorer.open()<CR>', silent = true, desc = 'Open explorer' },
   },
 }
