@@ -46,11 +46,11 @@ return {
       desc = 'Toggle Scratch Buffer',
     },
     {
-      '<leader>f.',
+      '<leader>fs',
       function()
         Snacks.scratch.select()
       end,
-      desc = 'Select Scratch Buffer',
+      desc = '[S]elect Scratch Buffer',
     },
 
     { '<leader>vd', ':lua require("snacks").dim()<CR>', silent = true, desc = 'Dim' },
@@ -59,7 +59,8 @@ return {
     { '<leader>tt', ':lua require("snacks").toggle()<CR>', silent = true, desc = 'Toggle Menu' },
 
     { '\\', ':lua require("snacks").explorer.reveal()<CR>', silent = true, desc = 'Reveal file' },
-    { '<C-n>', ':lua require("snacks").explorer.open()<CR>', silent = true, desc = 'Open explorer' },
+    { '<leader>e', ':lua require("snacks").explorer.open()<CR>', silent = true, desc = 'Open [e]xplorer' },
+    { '<C-n>', ':lua require("snacks").explorer.open()<CR>', silent = true, desc = 'Open [e]xplorer' },
 
     { '<C-x>', ':lua require("snacks").bufdelete.delete()<CR>', silent = true, desc = 'Close buffer' },
   },

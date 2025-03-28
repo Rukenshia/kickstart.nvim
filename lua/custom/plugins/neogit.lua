@@ -13,7 +13,7 @@ return {
     }
   end,
   keys = {
-    { '<leader>gg', '<cmd>Neogit<CR>', desc = 'Neo[g]it' },
+    { '<leader>g', '<cmd>Neogit<CR>', desc = 'Neo[g]it' },
     { '<leader>gc', '<cmd>Neogit commit<CR>', desc = 'Neogit [c]ommit' },
   },
 }

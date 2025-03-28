@@ -50,37 +50,37 @@ return {
       end
 
       -- Toggle breakpoint
-      vim.keymap.set('n', '<leader>db', function()
+      vim.keymap.set('n', '<leader>Db', function()
         dap.toggle_breakpoint()
       end, opts 'Toggle breakpoint')
 
       -- Continue / Start
-      vim.keymap.set('n', '<leader>dc', function()
+      vim.keymap.set('n', '<leader>Dc', function()
         dap.continue()
       end, opts 'Continue')
 
       -- Step Over
-      vim.keymap.set('n', '<leader>do', function()
+      vim.keymap.set('n', '<leader>Do', function()
         dap.step_over()
       end, opts 'Step Over')
 
       -- Step Into
-      vim.keymap.set('n', '<leader>di', function()
+      vim.keymap.set('n', '<leader>Di', function()
         dap.step_into()
       end, opts 'Step Into')
 
       -- Step Out
-      vim.keymap.set('n', '<leader>dO', function()
+      vim.keymap.set('n', '<leader>DO', function()
         dap.step_out()
       end, opts 'Step Out')
 
       -- Keymap to terminate debugging
-      vim.keymap.set('n', '<leader>dq', function()
+      vim.keymap.set('n', '<leader>Dq', function()
         require('dap').terminate()
       end, opts 'Terminate')
 
       -- Toggle DAP UI
-      vim.keymap.set('n', '<leader>du', function()
+      vim.keymap.set('n', '<leader>Du', function()
         dapui.toggle()
       end, opts 'Toggle DAP UI')
     end,
