@@ -259,5 +259,14 @@ require('lazy').setup({
   },
 })
 
+-- Initialize keybind tracking
+require('custom.keybind_tracker').setup {
+  -- Options:
+  -- save_mode = "immediate", -- Save after every keybind use (default)
+  -- save_mode = "periodic", -- Save periodically
+  -- save_interval = 300, -- Save every 5 minutes (only used when save_mode is "periodic")
+}
+
 -- The line beneath this is called `modeline`. See `:help modeline`
 -- vim: ts=2 sts=2 sw=2 et
+

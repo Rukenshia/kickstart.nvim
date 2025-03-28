@@ -25,9 +25,21 @@ return {
 
       sections = {
         { section = 'header' },
-        { icon = ' ', title = 'Keymaps', section = 'keys', indent = 2, padding = 1 },
-        { icon = ' ', title = 'Recent Files', section = 'recent_files', indent = 2, padding = 1 },
-        { icon = ' ', title = 'Projects', section = 'projects', indent = 2, padding = 1 },
+        { icon = '', title = 'Keymaps', section = 'keys', indent = 2, padding = 1 },
+        { icon = '', title = 'Recent Files', section = 'recent_files', indent = 2, padding = 1 },
+        { icon = '', title = 'Projects', section = 'projects', indent = 2, padding = 1 },
+        {
+          icon = '󰌌 ',
+          title = 'Keybind Usage',
+          section = 'terminal',
+          cmd = 'nvim --headless -c \'lua require("custom.keybind_stats")\' -c q',
+          height = 10,
+          padding = 4,
+          ttl = 900, -- For immediate testing
+          indent = 2,
+          key = 'K',
+          action = ':KeybindReport',
+        },
         { section = 'startup' },
       },
     },
@@ -60,7 +72,6 @@ return {
 
     { '\\', ':lua require("snacks").explorer.reveal()<CR>', silent = true, desc = 'Reveal file' },
     { '<leader>e', ':lua require("snacks").explorer.open()<CR>', silent = true, desc = 'Open [e]xplorer' },
-    { '<C-n>', ':lua require("snacks").explorer.open()<CR>', silent = true, desc = 'Open [e]xplorer' },
 
     { '<C-x>', ':lua require("snacks").bufdelete.delete()<CR>', silent = true, desc = 'Close buffer' },
   },
