@@ -60,7 +60,7 @@ return { -- Useful plugin to show you pending keybinds.
       { '<leader>t', group = '[T]oggle' },
       { '<leader>x', group = 'Diagnosti[X]' },
       { '<leader>v', group = '[V]isual helpers', mode = { 'n' } },
-      { '<leader>f', group = '[F]iles', mode = { 'n' } },
     }
   end,
 }
+

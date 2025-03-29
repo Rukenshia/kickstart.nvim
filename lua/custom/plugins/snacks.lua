@@ -32,10 +32,10 @@ return {
           icon = '󰌌 ',
           title = 'Keybind Usage',
           section = 'terminal',
-          cmd = 'nvim --headless -c \'lua require("custom.keybind_stats")\' -c q',
+          cmd = vim.fn.stdpath 'config' .. '/lua/custom/keybind_stats.lua',
           height = 10,
           padding = 4,
-          ttl = 900, -- For immediate testing
+          ttl = 1,
           indent = 2,
           key = 'K',
           action = ':KeybindReport',
@@ -71,7 +71,7 @@ return {
     { '<leader>tt', ':lua require("snacks").toggle()<CR>', silent = true, desc = 'Toggle Menu' },
 
     { '\\', ':lua require("snacks").explorer.reveal()<CR>', silent = true, desc = 'Reveal file' },
-    { '<leader>e', ':lua require("snacks").explorer.open()<CR>', silent = true, desc = 'Open [e]xplorer' },
+    { '<C-n>', ':lua require("snacks").explorer.reveal()<CR>', silent = true, desc = 'Reveal file' },
 
     { '<C-x>', ':lua require("snacks").bufdelete.delete()<CR>', silent = true, desc = 'Close buffer' },
   },
