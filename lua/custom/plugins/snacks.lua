@@ -51,7 +51,7 @@ return {
     { '<leader>go', ':lua require("snacks").gitbrowse.open()<CR>', silent = true, desc = 'Git [o]pen browser' },
 
     {
-      '<leader>.',
+      '<leader>;',
       function()
         Snacks.scratch()
       end,
