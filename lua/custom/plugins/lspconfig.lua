@@ -3,13 +3,24 @@ return {
   'neovim/nvim-lspconfig',
   dependencies = {
     -- Automatically install LSPs and related tools to stdpath for Neovim
-    { 'williamboman/mason.nvim', config = true }, -- NOTE: Must be loaded before dependants
-    'williamboman/mason-lspconfig.nvim',
-    'WhoIsSethDaniel/mason-tool-installer.nvim',
+    { 'mason-org/mason.nvim', config = true }, -- NOTE: Must be loaded before dependants
+    {
+      'mason-org/mason-lspconfig.nvim',
+      opts = {
+        ensure_installed = {
+          'lua_ls',
+          'pyright',
+          'tailwindcss',
+          'jsonls',
+          'html',
+          'terraformls',
+        },
+      }
+    },
 
     -- Useful status updates for LSP.
     -- NOTE: `opts = {}` is the same as calling `require('fidget').setup({})`
-    { 'j-hui/fidget.nvim', opts = {} },
+    { 'j-hui/fidget.nvim',    opts = {} },
 
     -- Allows extra capabilities provided by nvim-cmp
     -- 'hrsh7th/cmp-nvim-lsp',
@@ -292,12 +303,6 @@ return {
 
     -- You can add other tools here that you want Mason to install
     -- for you, so that they are available from within Neovim.
-    local ensure_installed = vim.tbl_keys(servers or {})
-    vim.list_extend(ensure_installed, {
-      'stylua', -- Used to format Lua code
-    })
-    require('mason-tool-installer').setup { ensure_installed = ensure_installed }
-
     require('mason-lspconfig').setup {
       automatic_installation = true,
       handlers = {
@@ -313,4 +318,3 @@ return {
     }
   end,
 }
-
