@@ -235,6 +235,7 @@ local function load_data()
   if content and content ~= '' then
     local ok, data = pcall(json_decode, content)
     if ok and type(data) == 'table' and data.mappings then
+
       return data
     else
       print(colorize("Warning: Failed to parse JSON keybind data, returning empty dataset", "yellow"))
