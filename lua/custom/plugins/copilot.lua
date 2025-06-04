@@ -4,10 +4,10 @@ return {
   lazy = false,
   keys = {
     {
-      '<leader>cc',
+      '<leader>ct',
       '<cmd>lua require("copilot.suggestion").toggle_auto_trigger()<CR><cmd>lua require("snacks").notify.info("Copilot suggestions toggled")<CR>',
       mode = 'n',
-      desc = 'Toggle [c]ompletion',
+      desc = '[t]oggle completion',
     },
   },
   config = function()
