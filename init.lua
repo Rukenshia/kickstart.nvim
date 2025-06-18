@@ -165,6 +165,11 @@ vim.opt.scrolloff = 10
 --  See `:help hlsearch`
 vim.keymap.set('n', '<Esc>', '<cmd>nohlsearch<CR>')
 
+-- Save using <leader>w
+vim.keymap.set('n', '<leader>w', '<cmd>write<CR>', { desc = '[W]rite (save) the current file' })
+-- Save using Ctrl+S anywhere
+vim.keymap.set({ 'n', 'i', 'v', 't' }, '<C-s>', '<cmd>write<CR>', { desc = '[S]ave the current file' })
+
 -- Diagnostic keymaps
 vim.keymap.set('n', '<leader>q', vim.diagnostic.setloclist, { desc = 'Open diagnostic [Q]uickfix list' })
 
