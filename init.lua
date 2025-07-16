@@ -230,6 +230,18 @@ if not (vim.uv or vim.loop).fs_stat(lazypath) then
 end ---@diagnostic disable-next-line: undefined-field
 vim.opt.rtp:prepend(lazypath)
 
+-- [[ Diagnostic Setup ]]
+vim.diagnostic.config({
+  virtual_text = {
+    -- Show diagnostics inline with the text
+    prefix = '●', -- Could be '●', '▎', 'x', '■', etc.
+  },
+  signs = true, -- Show signs in the sign column
+  underline = true, -- Underline diagnostics
+  update_in_insert = false, -- Don't update diagnostics while typing
+  severity_sort = true, -- Sort diagnostics by severity
+})
+
 -- [[ Configure and install plugins ]]
 --
 --  To check the current status of your plugins, run

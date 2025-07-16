@@ -6,12 +6,24 @@ return {
     -- "antoinemadec/FixCursorHold.nvim",
     "nvim-treesitter/nvim-treesitter",
     { "fredrikaverpil/neotest-golang", version = "*" },
+    { "nvim-neotest/neotest-python",   version = "*" },
+    { "nvim-neotest/neotest-jest",     version = "*" },
   },
   config = function()
     local neotest_golang_opts = {} -- Specify custom configuration
     require("neotest").setup({
       adapters = {
         require("neotest-golang")(neotest_golang_opts), -- Registration
+        require("neotest-python")({
+          dap = { justMyCode = false },                 -- Enable debugging with DAP
+        }),
+        require("neotest-jest")({
+          jestCommand = "npm test --",
+          env = { CI = true },     -- Set environment variables
+          cwd = function(path)
+            return vim.fn.getcwd() -- Use current working directory
+          end,
+        }),
       },
     })
   end,
