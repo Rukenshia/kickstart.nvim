@@ -169,6 +169,8 @@ vim.keymap.set('n', '<Esc>', '<cmd>nohlsearch<CR>')
 vim.keymap.set({ 'n', 'i', 'v', 't' }, '<C-s>', '<cmd>write<CR>', { desc = '[S]ave the current file' })
 -- Save and Quit using Ctrl+Q anywhere
 vim.keymap.set({ 'n', 'i', 'v', 't' }, '<C-q>', '<cmd>xa<CR>', { desc = '[Q]uit Neovim' })
+-- Close current buffer using Ctrl+X
+vim.keymap.set({ 'n', 'i', 'v', 't' }, '<C-x>', '<cmd>close<CR>', { desc = '[X] Close current buffer' })
 
 -- Diagnostic keymaps
 vim.keymap.set('n', '<leader>q', vim.diagnostic.setloclist, { desc = 'Open diagnostic [Q]uickfix list' })
@@ -203,6 +205,16 @@ vim.keymap.set('n', '<C-.>', '<C-w>>', { desc = 'Expand width' })
 -- Vertical resizing
 vim.keymap.set('n', '<C-->', '<C-w>-', { desc = 'Shrink height' })
 vim.keymap.set('n', '<C-+>', '<C-w>+', { desc = 'Expand height' })
+
+-- Copilot Chat Quick Chat Keybinds
+vim.keymap.set('n', '<leader>ccq', function()
+  local input = vim.fn.input("Quick Chat: ")
+  if input ~= "" then
+    require("CopilotChat").ask(input, {
+      selection = require("CopilotChat.select").buffer
+    })
+  end
+end, { desc = "CopilotChat - Quick chat" })
 
 -- [[ Basic Autocommands ]]
 --  See `:help lua-guide-autocommands`

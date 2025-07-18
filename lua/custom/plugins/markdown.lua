@@ -4,7 +4,7 @@ return {
   lazy = true,
   event = 'VeryLazy',
   dependencies = { 'nvim-treesitter/nvim-treesitter' },
-  ft = { 'markdown', 'Avante' },
+  ft = { 'markdown', 'Avante', 'copilot-chat' },
 
   config = function()
     -- define highlight groups
@@ -15,7 +15,7 @@ return {
       hi MarkdownHeadingSymbol1 guifg=#ff0000
     ]]
     require('render-markdown').setup {
-      file_types = { 'markdown', 'Avante' },
+      file_types = { 'markdown', 'Avante', 'copilot-chat' },
       headings = { 'h.', 'h2.', 'h3.', 'h4.', 'h5.', 'h6.' },
       highlights = {
         heading = {
