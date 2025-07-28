@@ -41,7 +41,6 @@ return {
           dismiss = '<C-]>',
         },
       },
-      copilot_node_command = os.getenv 'NODE_LTS',
       server_opts_overrides = {},
       filetypes = { markdown = true, gitcommit = true, yaml = true },
     }
