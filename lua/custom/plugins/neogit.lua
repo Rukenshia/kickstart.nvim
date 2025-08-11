@@ -13,6 +13,6 @@ return {
     }
   end,
   keys = {
-    { '<leader>G', '<cmd>Neogit<CR>', desc = 'Neo[g]it' },
+    { '<leader>gg', '<cmd>Neogit<CR>', desc = 'Neo[g]it' },
   },
 }

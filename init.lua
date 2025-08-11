@@ -91,7 +91,7 @@ vim.g.mapleader = ' '
 vim.g.maplocalleader = ' '
 
 -- Set to true if you have a Nerd Font installed and selected in the terminal
-vim.g.have_nerd_font = false
+vim.g.have_nerd_font = true
 
 -- [[ Setting options ]]
 -- See `:help vim.opt`
@@ -207,14 +207,20 @@ vim.keymap.set('n', '<C-->', '<C-w>-', { desc = 'Shrink height' })
 vim.keymap.set('n', '<C-+>', '<C-w>+', { desc = 'Expand height' })
 
 -- Copilot Chat Quick Chat Keybinds
-vim.keymap.set('n', '<leader>ccq', function()
+vim.keymap.set('n', '<leader>cq', function()
   local input = vim.fn.input("Quick Chat: ")
   if input ~= "" then
     require("CopilotChat").ask(input, {
       selection = require("CopilotChat.select").buffer
     })
   end
-end, { desc = "CopilotChat - Quick chat" })
+end, { desc = "CopilotChat - [Q]uick chat" })
+
+-- UI toggles following community best practices
+vim.keymap.set('n', '<leader>uw', '<cmd>set wrap!<CR>', { desc = 'Toggle [W]rap' })
+vim.keymap.set('n', '<leader>ul', '<cmd>set number!<CR>', { desc = 'Toggle [L]ine numbers' })
+vim.keymap.set('n', '<leader>ur', '<cmd>set relativenumber!<CR>', { desc = 'Toggle [R]elative numbers' })
+vim.keymap.set('n', '<leader>us', '<cmd>set spell!<CR>', { desc = 'Toggle [S]pell check' })
 
 -- [[ Basic Autocommands ]]
 --  See `:help lua-guide-autocommands`
@@ -291,12 +297,9 @@ require('lazy').setup({
 })
 
 -- Initialize keybind tracking
-require('custom.keybind_tracker').setup {
-  -- Options:
-  save_mode = 'immediate', -- Save after every keybind use (default)
-  -- save_mode = "periodic", -- Save periodically
-  -- save_interval = 300, -- Save every 5 minutes (only used when save_mode is "periodic")
-}
+-- require('custom.keybind_tracker').setup {
+--   save_mode = 'immediate', -- Save after every keybind use (default)
+-- }
 
 -- The line beneath this is called `modeline`. See `:help modeline`
 -- vim: ts=2 sts=2 sw=2 et
