@@ -13,12 +13,12 @@ return {
   config = function()
     require('copilot').setup {
       panel = {
-        enabled = true,
+        enabled = false,
         auto_refresh = true,
         keymap = {
           jump_prev = '[[',
           jump_next = ']]',
-          accept = '<C-y>',
+          accept = false,
           refresh = 'gr',
           open = '<M-CR>',
         },
