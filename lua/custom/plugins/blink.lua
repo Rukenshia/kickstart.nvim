@@ -30,30 +30,23 @@ return {
       ['<C-y>'] = {},
       ['<CR>'] = { 'select_and_accept', 'fallback' },
       ['<Tab>'] = {
+        function(cmp)
+          if cmp.snippet_active() then return cmp.accept()
+          else return cmp.select_and_accept() end
+        end,
         'snippet_forward',
-        function() -- sidekick next edit suggestion
-          return require('sidekick').nes_jump_or_apply()
-        end,
-        function() -- if you are using Neovim's native inline completions
-          return vim.lsp.inline_completion.get()
-        end,
-        'fallback',
+        'fallback'
       },
     },
 
     appearance = {
       -- 'mono' (default) for 'Nerd Font Mono' or 'normal' for 'Nerd Font'
       -- Adjusts spacing to ensure icons are aligned
-      nerd_font_variant = 'mono',
-    },
-
-    signature = {
-      -- (Default) Enable signature help
-      enabled = true,
+      nerd_font_variant = 'mono'
     },
 
     -- (Default) Only show the documentation popup when manually triggered
-    completion = { documentation = { auto_show = true, auto_show_delay_ms = 100 } },
+    completion = { documentation = { auto_show = false } },
 
     -- Default list of enabled providers defined so that you can extend it
     -- elsewhere in your config, without redefining it, due to `opts_extend`
@@ -66,7 +59,7 @@ return {
     -- when the Rust fuzzy matcher is not available, by using `implementation = "prefer_rust"`
     --
     -- See the fuzzy documentation for more information
-    fuzzy = { implementation = 'prefer_rust_with_warning' },
+    fuzzy = { implementation = "prefer_rust_with_warning" }
   },
-  opts_extend = { 'sources.default' },
+  opts_extend = { "sources.default" }
 }
