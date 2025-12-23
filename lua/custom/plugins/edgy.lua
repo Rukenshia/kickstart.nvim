@@ -15,16 +15,5 @@ return {
         end,
       },
     },
-    right = {
-      {
-        --outline
-        ft = "Outline",
-        title = "Outline",
-        size = { width = 40 },
-        filter = function(buf)
-          return vim.bo[buf].filetype == "Outline"
-        end,
-      }
-    },
   }
 }
